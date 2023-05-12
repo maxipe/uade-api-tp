@@ -1,7 +1,8 @@
-import { Box, Paper, Stack, Typography } from "@mui/material";
-import SimpleCategory from "./categories/SimpleCategory";
+import { Box, Link, Paper, Stack, Typography } from "@mui/material";
+import GenericCategory from "../categories/GenericCategory";
+import SimpleCategory from "../categories/SimpleCategory";
 
-const LeftSidePanel = (): JSX.Element => {
+const BasicInfoSection = (): JSX.Element => {
   return (
     <Paper elevation={8} sx={{ backgroundColor: "primary.light" }}>
       <Stack
@@ -35,6 +36,20 @@ const LeftSidePanel = (): JSX.Element => {
               content={"Buenos Aires, Argentina"}
             />
 
+            <SimpleCategory title="Phone" content="+54-911-54037763" />
+
+            <GenericCategory
+              title="LinkedIn"
+              content={
+                <Link
+                  href="https://www.linkedin.com/in/maximilianope"
+                  sx={{ color: "black" }}
+                >
+                  https://www.linkedin.com/in/maximilianope
+                </Link>
+              }
+            />
+
             <SimpleCategory
               title="Languages"
               content={["Spanish", "English"]}
@@ -45,30 +60,6 @@ const LeftSidePanel = (): JSX.Element => {
             />
 
             <SimpleCategory title="Date of birth" content="1992-01-21" />
-            <SimpleCategory
-              title="Programming Languages"
-              content={["C#", "Javascript", "Typescript", "Python", "Java"]}
-            />
-            <SimpleCategory
-              title="Frameworks and Libraries"
-              content={[".NET", "React", "Node", "ExpressJS", "NestJS"]}
-            />
-            <SimpleCategory
-              title="ORM's"
-              content={["Entity Framework", "NHibernate", "Prisma"]}
-            />
-            <SimpleCategory
-              title="Databases"
-              content={["MySQL", "SQL Server", "PostgreSQL"]}
-            />
-            <SimpleCategory
-              title="Testing Tools"
-              content={["NUnit", "XUnit", "Cypress"]}
-            />
-            <SimpleCategory
-              title="Continuous Integration"
-              content={["Jenkins", "Azure DevOps", "GitHub Actions"]}
-            />
           </Stack>
         </Paper>
       </Stack>
@@ -76,4 +67,4 @@ const LeftSidePanel = (): JSX.Element => {
   );
 };
 
-export default LeftSidePanel;
+export default BasicInfoSection;

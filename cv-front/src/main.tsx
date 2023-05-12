@@ -8,19 +8,45 @@ import { createRoot } from "react-dom/client";
 import CvApp from "./components/CvApp";
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
-import blueGrey from "@mui/material/colors/blueGrey";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import Login from "./components/Login";
+import ContactRequests from "./components/ContactRequests";
+import { indigo } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
-    primary: blueGrey,
+    primary: indigo,
   },
 });
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <CvApp />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/contact-requests",
+    element: <ContactRequests />,
+  },
+  {
+    path: "*",
+    element: <Navigate to="/" />,
+  },
+]);
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
     <CssBaseline />
     <ThemeProvider theme={theme}>
-      <CvApp />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>
 );

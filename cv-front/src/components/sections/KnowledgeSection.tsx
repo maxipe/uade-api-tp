@@ -1,10 +1,71 @@
-import { Box, Paper, Tabs, Tab } from "@mui/material";
+import { Box, Paper, Tabs, Tab, Typography } from "@mui/material";
 import { useState } from "react";
 
-const KnowledgeSection = (): JSX.Element => {
-  const [value, setValue] = useState("one");
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
-  const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography component="div">{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+const KnowledgeSection = (): JSX.Element => {
+  const [value, setValue] = useState(0);
+
+  const sections = [
+    {
+      name: "Languages",
+      values: ["C#", "Javascript", "Typescript", "Python", "Java"],
+    },
+    {
+      name: "Soft Skills",
+      values: [
+        "Hard working",
+        "Creative",
+        "Objective oriented",
+        "Client focused",
+      ],
+    },
+    {
+      name: "Frameworks & Libraries",
+      values: [".NET", "React", "Node", "ExpressJS", "NestJS"],
+    },
+    {
+      name: "ORM's",
+      values: ["Entity Framework", "NHibernate", "Prisma"],
+    },
+    {
+      name: "Databases",
+      values: ["MySQL", "SQL Server", "PostgreSQL"],
+    },
+    {
+      name: "Testing",
+      values: ["NUnit", "XUnit", "Cypress"],
+    },
+    {
+      name: "CI/CD",
+      values: ["Jenkins", "Azure DevOps", "GitHub Actions"],
+    },
+  ];
+
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -17,15 +78,29 @@ const KnowledgeSection = (): JSX.Element => {
         <Tabs
           value={value}
           onChange={handleChange}
-          textColor="black"
+          textColor="inherit"
           indicatorColor="primary"
           sx={{ color: "black" }}
         >
-          <Tab value="one" label="Item One" />
-          <Tab value="two" label="Item Two" />
-          <Tab value="three" label="Item Three" />
+          {sections.map((section, index) => {
+            return <Tab key={index} value={index} label={section.name} />;
+          })}
         </Tabs>
       </Box>
+
+      {sections.map((section, index) => {
+        return (
+          <TabPanel key={"tab-" + index.toString()} value={value} index={index}>
+            {section.values.map((value: string, index: number) => {
+              return (
+                <Typography key={index} variant="body1">
+                  {value}
+                </Typography>
+              );
+            })}
+          </TabPanel>
+        );
+      })}
     </Paper>
   );
 };
