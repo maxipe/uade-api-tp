@@ -16,6 +16,7 @@ import {
 import Login from "./components/Login";
 import ContactRequests from "./components/ContactRequests";
 import { indigo } from "@mui/material/colors";
+import Register from "./components/Register";
 
 const theme = createTheme({
   palette: {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
   {
     path: "/contact-requests",

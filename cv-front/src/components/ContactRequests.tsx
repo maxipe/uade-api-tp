@@ -1,52 +1,90 @@
-import { Button, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, Paper, Stack, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import ContactTable, { ContactDataEntry } from "./basic/ContactTable";
 
 const ContactRequests = (): JSX.Element => {
+  const entries: ContactDataEntry[] = [
+    {
+      name: "John Doe",
+      email: "jdoe@example.com",
+      phone: "+5491154037763",
+      message: "I want to hire you",
+    },
+    {
+      name: "Jane Doe",
+      email: "janedoe@example.com",
+      phone: "+5491155445544",
+      message: "I want to hire you too",
+    },
+    {
+      name: "Jane Doe",
+      email: "janedoe@example.com",
+      phone: "+5491155445544",
+      message: "I want to hire you too",
+    },
+    {
+      name: "Jane Doe",
+      email: "janedoe@example.com",
+      phone: "+5491155445544",
+      message: "I want to hire you too",
+    },
+    {
+      name: "Jane Doe",
+      email: "janedoe@example.com",
+      phone: "+5491155445544",
+      message: "I want to hire you too",
+    },
+    {
+      name: "Jane Doe",
+      email: "janedoe@example.com",
+      phone: "+5491155445544",
+      message: "I want to hire you too",
+    },
+    {
+      name: "Jane Doe",
+      email: "janedoe@example.com",
+      phone: "+5491155445544",
+      message: "I want to hire you too",
+    },
+    {
+      name: "Jane Doe",
+      email: "janedoe@example.com",
+      phone: "+5491155445544",
+      message: "I want to hire you too",
+    },
+  ];
+
   const navigation = useNavigate();
   return (
     <>
       <Paper elevation={8} sx={{ backgroundColor: "primary.light" }}>
-        <Stack
-          direction="column"
-          spacing={2}
+        <Box
+          display="flex"
+          justifyContent="center"
           alignItems="center"
-          sx={{ p: "1em" }}
+          minHeight="100vh"
         >
-          <Typography variant="h2">Contact Requests</Typography>
-        </Stack>
-      </Paper>
-      <Paper
-        elevation={8}
-        sx={{ backgroundColor: "primary.light", marginTop: "2em" }}
-      >
-        <Stack
-          direction="column"
-          spacing={2}
-          alignItems="center"
-          sx={{ p: "1em" }}
-        >
-          <div>
-            <Typography variant="h5">Juan Perez</Typography>
-            <Typography variant="body1">jperez@example.com</Typography>
-            <Typography variant="body1">+5491154037763</Typography>
-          </div>
-
-          <div>
-            <Typography variant="h5">Pedro Diaz</Typography>
-            <Typography variant="body1">pdiaz@example.com</Typography>
-            <Typography variant="body1">+5491155445544</Typography>
-          </div>
-
-          <Button
-            id="submit"
-            variant="contained"
-            onClick={() => {
-              navigation("/");
-            }}
+          <Stack
+            direction="column"
+            spacing={2}
+            alignItems="center"
+            sx={{ p: "1em" }}
           >
-            Log out
-          </Button>
-        </Stack>
+            <Typography variant="h2">Contact Requests</Typography>
+            {/* <Paper elevation={8} sx={{ backgroundColor: "white", p: 4 }}> */}
+            <ContactTable rows={entries} />
+            {/* </Paper> */}
+            <Button
+              id="submit"
+              variant="contained"
+              onClick={() => {
+                navigation("/");
+              }}
+            >
+              Log out
+            </Button>
+          </Stack>
+        </Box>
       </Paper>
     </>
   );

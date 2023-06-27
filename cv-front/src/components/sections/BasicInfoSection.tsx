@@ -4,7 +4,10 @@ import SimpleCategory from "../categories/SimpleCategory";
 
 const BasicInfoSection = (): JSX.Element => {
   return (
-    <Paper elevation={8} sx={{ backgroundColor: "primary.light" }}>
+    <Paper
+      elevation={8}
+      sx={{ backgroundColor: "primary.light", minHeight: "100%" }}
+    >
       <Stack
         direction="column"
         spacing={2}
@@ -56,7 +59,7 @@ const BasicInfoSection = (): JSX.Element => {
             />
             <SimpleCategory
               title="Nationality"
-              content="Argentinean, Uruguayan & Spanish"
+              content="Argentinean & Spanish"
             />
 
             <SimpleCategory title="Date of birth" content="1992-01-21" />

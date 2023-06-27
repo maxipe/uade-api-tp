@@ -1,10 +1,18 @@
-import { Button, Paper, Stack, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 
 const ContactMeSection = (): JSX.Element => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -18,10 +26,15 @@ const ContactMeSection = (): JSX.Element => {
     setPhone(e.target.value);
   };
 
+  const onChangeMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
+  };
+
   const requestContact = () => {
     setName("");
     setEmail("");
     setPhone("");
+    setMessage("");
   };
 
   return (
@@ -31,10 +44,12 @@ const ContactMeSection = (): JSX.Element => {
     >
       <Stack direction="column" spacing={2}>
         <Typography variant="h6">Contact Me</Typography>
+
         <TextField
           id="name"
           label="Full Name"
           variant="outlined"
+          fullWidth
           value={name}
           onChange={onChangeName}
         />
@@ -42,6 +57,7 @@ const ContactMeSection = (): JSX.Element => {
           id="email"
           label="Email"
           variant="outlined"
+          fullWidth
           value={email}
           onChange={onChangeEmail}
         />
@@ -49,8 +65,20 @@ const ContactMeSection = (): JSX.Element => {
           id="phone"
           label="Phone"
           variant="outlined"
+          fullWidth
           value={phone}
           onChange={onChangePhone}
+        />
+        <TextField
+          id="message"
+          label="Message"
+          variant="outlined"
+          fullWidth
+          multiline
+          minRows={3}
+          maxRows={3}
+          value={message}
+          onChange={onChangeMessage}
         />
         <Button id="submit" variant="contained" onClick={requestContact}>
           Request Contact

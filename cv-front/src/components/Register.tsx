@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const Login = (): JSX.Element => {
+const Register = (): JSX.Element => {
   const navigation = useNavigate();
   return (
     <Paper elevation={8} sx={{ backgroundColor: "primary.light" }}>
@@ -27,7 +27,7 @@ const Login = (): JSX.Element => {
             alignItems="center"
             sx={{ p: "1em" }}
           >
-            <Typography variant="h2">Login</Typography>
+            <Typography variant="h2">Register</Typography>
             <TextField id="username" label="Username" variant="outlined" />
             <TextField
               id="password"
@@ -42,7 +42,7 @@ const Login = (): JSX.Element => {
                 navigation("/contact-requests");
               }}
             >
-              Login
+              Register
             </Button>
           </Stack>
         </Paper>
@@ -51,4 +51,4 @@ const Login = (): JSX.Element => {
   );
 };
 
-export default Login;
+export default Register;

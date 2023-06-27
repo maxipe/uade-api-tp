@@ -1,0 +1,11 @@
+Notas:
+
+Listo:
+Mas ancho, dejar mitad de blanco de cada lado
+Bajar formulario de contacto al fondo
+Agregar campo de mensaje
+Completar left panel hasta abajo?
+Hacer una tabla para los contactos dentro del login
+
+Falta:
+-

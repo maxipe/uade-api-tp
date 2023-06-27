@@ -12,18 +12,16 @@ const CvApp = (): JSX.Element => {
   return (
     <Paper elevation={0} sx={{ p: 3 }}>
       <Grid container direction="row" spacing={4} justifyContent="center">
-        <Grid item xs={12} sm={5} lg={3} xl={2}>
-          <Stack direction="column" spacing={2}>
-            <BasicInfoSection />
-            <ContactMeSection />
-          </Stack>
+        <Grid item xs={12} sm={5} lg={3} xl={2} sx={{ minHeight: "100" }}>
+          <BasicInfoSection />
         </Grid>
-        <Grid item xs={12} sm={7} lg={7} xl={6}>
+        <Grid item xs={12} sm={7} lg={9} xl={9}>
           <Stack direction="column" spacing={2}>
             <AboutMeSection />
             <JobExperienceSection jobs={jobs} />
             <EducationSection />
             <KnowledgeSection />
+            <ContactMeSection />
           </Stack>
         </Grid>
       </Grid>
