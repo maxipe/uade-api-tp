@@ -2,14 +2,14 @@ import "dotenv/config.js";
 import { RequestHandler, response } from "express";
 import jwt from "jsonwebtoken";
 
-const validateJwt: RequestHandler = async (req, res = response, next) => {
+const validateJwt: RequestHandler = (req, res = response, next) => {
   try {
     if (req.headers.authorization?.startsWith("Bearer")) {
       const token = req.headers.authorization.split(" ")[1];
 
       const jwtValidate = jwt.verify(
         token,
-        process.env.JWT_SECRET
+        process.env.JWT_SECRET ?? ""
       );
 
       if (jwtValidate) {

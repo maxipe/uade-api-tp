@@ -31,13 +31,13 @@ const usersService = {
 
     const validLogin =
       user.username?.toLocaleLowerCase() === username.toLocaleLowerCase() &&
-      (await bcrypt.compare(password, user.password));
+      (await bcrypt.compare(password, user.password ?? ""));
 
     if (!validLogin) {
       throw new Error("Unauthorized. Invalid user or password");
     }
 
-    return jwt.sign({ username }, process.env.JWT_SECRET, {
+    return jwt.sign({ username }, process.env.JWT_SECRET ?? "", {
       expiresIn: "1d",
     });
   },
