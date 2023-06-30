@@ -1,14 +1,18 @@
 import {
+  Alert,
   Button,
-  Grid,
   Paper,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
+import { config } from "../../config";
 
 const ContactMeSection = (): JSX.Element => {
+  const [error, setError] = useState<string | undefined>();
+  const [showMessageSent, setShowMessageSent] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -30,7 +34,24 @@ const ContactMeSection = (): JSX.Element => {
     setMessage(e.target.value);
   };
 
-  const requestContact = () => {
+  const requestContact = async () => {
+    try {
+      const response = await axios.post(
+        config.backendUrl + "/contact-requests",
+        {
+          name,
+          email,
+          phone,
+          message,
+        }
+      );
+      if (response.status == 201) {
+        setShowMessageSent(true);
+      }
+    } catch (error) {
+      setError("Unknown error");
+    }
+
     setName("");
     setEmail("");
     setPhone("");
@@ -83,6 +104,14 @@ const ContactMeSection = (): JSX.Element => {
         <Button id="submit" variant="contained" onClick={requestContact}>
           Request Contact
         </Button>
+        {showMessageSent ? (
+          <Alert severity="success" onClose={() => setShowMessageSent(false)}>
+            Message sent!
+          </Alert>
+        ) : (
+          <></>
+        )}
+        {error ? <Alert severity="error">{error}</Alert> : <></>}
       </Stack>
     </Paper>
   );

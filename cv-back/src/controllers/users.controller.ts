@@ -29,7 +29,7 @@ const usersController = {
       res.json({ message: "Succesfully registered" });
     } catch (e) {
       res.status(403).json({
-        message: "Forbidden. User already createdSuccesfully registered",
+        message: "Forbidden. User already created",
       });
     }
   },
