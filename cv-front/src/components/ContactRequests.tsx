@@ -12,25 +12,26 @@ const ContactRequests = (): JSX.Element => {
 
   const navigation = useNavigate();
 
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const token = localStorage.getItem("token") as string;
-        const response = await axios.get(
-          config.backendUrl + "/contact-requests",
-          {
-            headers: {
-              Authorization: "Bearer " + token,
-            },
-          }
-        );
-        if (response.status == 200) {
-          setEntries(response.data as ContactDataEntry[]);
+  const makeRequest = async () => {
+    try {
+      const token = localStorage.getItem("token") as string;
+      const response = await axios.get(
+        config.backendUrl + "/contact-requests",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         }
-      } catch (error) {
-        setError("Unknown error");
+      );
+      if (response.status == 200) {
+        setEntries(response.data as ContactDataEntry[]);
       }
-    };
+    } catch (error) {
+      setError("Unknown error");
+    }
+  };
+
+  useEffect(() => {
     void makeRequest();
   }, []);
 
@@ -43,7 +44,7 @@ const ContactRequests = (): JSX.Element => {
 
   const logout = () => {
     localStorage.removeItem("token");
-    navigation("/");
+    navigation("/login");
   };
 
   return (
@@ -64,6 +65,10 @@ const ContactRequests = (): JSX.Element => {
             <Typography variant="h2">Contact Requests</Typography>
 
             <ContactTable rows={entries} />
+
+            <Button id="submit" variant="outlined" onClick={makeRequest}>
+              Refresh
+            </Button>
 
             <Button id="submit" variant="contained" onClick={logout}>
               Log out

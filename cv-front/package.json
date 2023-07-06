@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Maximiliano Peña",
   "scripts": {
-    "start": "node index.js",
+    "start": "vite",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "dev": "vite",
@@ -13,6 +13,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "^20.4.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
@@ -37,6 +38,7 @@
     "@mui/material": "^5.11.13",
     "@mui/system": "^5.13.5",
     "axios": "^1.4.0",
+    "dot-env": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1"
