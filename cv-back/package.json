@@ -4,9 +4,8 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src/app.ts",
+    "start": "ts-node src/app.ts",
     "start:dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "start:dev2": "yarn swagger:generate && node --watch src/app.ts",
     "swagger:generate": "node src/swagger.ts",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet"
